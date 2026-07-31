@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dr.Castro | Agendar Citas & Tienda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .bg-primary { background-color: #0D47A1; }
+        .text-primary { color: #0D47A1; }
+        .bg-secondary { background-color: #42A5F5; }
+        .bg-accent { background-color: #FB8C00; }
+        .text-accent { color: #FB8C00; }
+        .bg-neutral { background-color: #90A4AE; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <nav class="fixed w-full z-50 glass shadow-md py-4 px-6 flex justify-between items-center h-32 w-64 overflow-hidden">
+        <img src="JorgeCastro.jpg"
+     alt="Logo"
+     class="h-64 w-64">
+        <button onclick="toggleCart()" class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition">
+            <i data-lucide="shopping-cart" class="w-6 h-6 text-primary"></i>
+            <span id="cart-count" class="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+    </nav>
+
+    <header class="pt-32 pb-16 px-6 text-center bg-white">
+         <img
+            src="logo dental remover (1) copia.png"
+            class="mx-auto mt-0 mb-8 rounded-3xl shadow-xl max-w-4xl w-full">
+        <div class="flex flex-col gap-3 max-w-xs mx-auto">
+            <button onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})" class="bg-accent text-white font-bold py-4 px-8 rounded-full shadow-lg">
+                Agendar Cita
+            </button>
+            <button onclick="document.getElementById('tienda').scrollIntoView({behavior:'smooth'})" class="bg-primary text-white font-bold py-4 px-8 rounded-full shadow-lg">
+                Ver Tienda
+            </button>
+        </div>
+    </header>
+
+    <section id="servicios" class="py-16 px-6">
+        <h3 class="text-2xl font-bold text-center text-primary mb-10">Nuestros Servicios</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <img src="consulta.png" class="w-full h-40 object-cover rounded-xl mb-4">
+                <h4 class="text-xl font-semibold mb-2">Consulta General</h4>
+                <button onclick="showGeneralPolicy()" class="text-primary font-bold hover:underline">Reservar ahora</button>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <img src="especialidades.png" class="w-full h-40 object-cover rounded-xl mb-4">
+                <h4 class="text-xl font-semibold mb-2">Consulta Especialidad</h4>
+                <button onclick="showSpecialtyPolicy()" class="text-primary font-bold hover:underline">Reservar ahora</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tienda" class="py-16 px-6 bg-white">
+        <h3 class="text-2xl font-bold text-center text-primary mb-10">Tienda</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                <img src="cepillo electrico.jpg" class="h-auto w-auto object-cover rounded-xl mb-4">
+                <h4 class="font-bold">Cepillo Electrico</h4>
+                <p class="text-gray-500 mb-4">S/.50.00</p>
+                <button onclick="addToCart('Cepillo Electrico', 50.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                <img src="pasta.png" class="h-80 w-auto object-cover rounded-xl mb-4">
+                <h4 class="font-bold">Pasta de Hidroxiapatita</h4>
+                <p class="text-gray-500 mb-4">S/30.00</p>
+                <button onclick="addToCart('Pasta de Hidroxiapatita', 30.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                <img src="balsamo.png" class="h-auto w-auto object-cover rounded-xl mb-4">
+                <h4 class="font-bold">Balsamo Labial</h4>
+                <p class="text-gray-500 mb-4">S/.20.00</p>
+                <button onclick="addToCart('Balsamo Labial', 20.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-primary text-white py-12 px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center  gap-6 text-center md:text-left">
+            <div class="h-32 mt-0">
+                 <img src="logo dental remover (1).png"
+                 alt="Logo"
+                 class="h-32  mt-1  ml-20 mb-0">
+                <p class="text-gray-200 text-sm"> Conectando contigo a través de nuestros canales oficiales.</p>
+            </div>
+            <!-- Iconos de Redes Sociales en el pie de página con mayor separación -->
+            <div class="flex gap-6">
+                <a href="https://instagram.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f" class="w-6 h-6"></i>
+                </a>
+                <a href="https://tiktok.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-xs text-gray-300 border-t border-white/10 pt-6">
+            &copy; 2026 <span style="font-size:larger;"><strong>Dr.Castro</strong></span> Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <div id="general-policy-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-6">
+            <h3 class="text-xl font-bold mb-4 text-primary" id="modal-title">Aviso de Consulta</h3>
+            <p class="text-gray-600 mb-6" id="modal-text">La consulta tiene un costo de S/ 50.00. <b>Nota: Si te atiendes en el local el mismo día, ¡es GRATIS!</b></p>
+            <div class="flex gap-4">
+                <button onclick="closeModal('general-policy-modal')" class="flex-1 py-3 rounded-full border">Cancelar</button>
+                <button id="modal-confirm-btn" class="flex-1 py-3 rounded-full bg-accent text-white font-bold">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="booking-form-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
+            <h3 class="text-xl font-bold mb-4 text-primary">Detalles de Cita</h3>
+            <form id="booking-form" class="space-y-4">
+                <input type="text" id="b-name" placeholder="Tu nombre" required class="w-full p-3 bg-gray-100 rounded-xl">
+                <input type="tel" id="b-phone" placeholder="Tu teléfono" required class="w-full p-3 bg-gray-100 rounded-xl">
+                <select id="b-urgency" class="w-full p-3 bg-gray-100 rounded-xl"><option value="No">No es urgente</option><option value="Sí">Es urgente</option></select>
+                <input type="datetime-local" id="b-datetime" required class="w-full p-3 bg-gray-100 rounded-xl">
+                <textarea id="b-desc" placeholder="Motivo de la consulta" class="w-full p-3 bg-gray-100 rounded-xl"></textarea>
+                <div class="flex gap-4 pt-4">
+                    <button type="button" onclick="closeModal('booking-form-modal')" class="flex-1 py-3 rounded-full border">Cancelar</button>
+                    <button type="submit" class="flex-1 bg-primary text-white py-3 rounded-full font-bold">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+<script>
+lucide.createIcons();
+
+const WHATSAPP_NUMBER = "51914934518";
+let cart = [];
+
+function sendWhatsApp(msg){
+    const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(msg)}`;
+
+    if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+        window.location.href = url;
+    }else{
+        const w = window.open(url, "_blank", "noopener,noreferrer");
+        if(!w){
+            window.location.href = url;
+        }
+    }
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.add('hidden');
+}
+
+function showGeneralPolicy(){
+    const modal = document.getElementById('general-policy-modal');
+    const btn = document.getElementById('modal-confirm-btn');
+
+    modal.classList.remove('hidden');
+
+    btn.onclick = () => {
+        closeModal('general-policy-modal');
+
+        sendWhatsApp(
+            "Hola, quiero agendar una Consulta General. Entiendo que la consulta cuesta S/50 pero es gratis si me atiendo en el local el mismo día."
+        );
+    };
+}
+
+function showSpecialtyPolicy(){
+    const modal = document.getElementById('general-policy-modal');
+    const btn = document.getElementById('modal-confirm-btn');
+
+    modal.classList.remove('hidden');
+
+    btn.onclick = () => {
+        closeModal('general-policy-modal');
+        document.getElementById('booking-form-modal').classList.remove('hidden');
+    };
+}
+
+document.getElementById('booking-form').onsubmit = function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('b-name').value;
+    const phone = document.getElementById('b-phone').value;
+    const urgency = document.getElementById('b-urgency').value;
+    const date = document.getElementById('b-datetime').value;
+    const desc = document.getElementById('b-desc').value;
+
+    const msg = `Hola, quiero agendar una Consulta por Especialidad:
+
+👤 Nombre: ${name}
+📱 Teléfono: ${phone}
+⚠️ Urgente: ${urgency}
+📅 Fecha: ${date}
+📝 Motivo: ${desc}`;
+
+    closeModal('booking-form-modal');
+    sendWhatsApp(msg);
+};
+
+function toggleCart(){
+    document.getElementById('cart-modal').classList.toggle('hidden');
+}
+
+function addToCart(name, price){
+    cart.push({name, price});
+    updateCartUI();
+}
+
+function removeFromCart(index){
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function clearCart(){
+    cart = [];
+    updateCartUI();
+}
+
+function updateCartUI(){
+    const itemsContainer = document.getElementById('cart-items');
+    const count = document.getElementById('cart-count');
+    const totalEl = document.getElementById('cart-total');
+
+    count.innerText = cart.length;
+
+    if(cart.length === 0){
+        itemsContainer.innerHTML = '<p class="text-gray-500 text-center">Tu carrito está vacío</p>';
+        totalEl.innerText = 'S/ 0.00';
+        return;
+    }
+
+    let total = 0;
+    itemsContainer.innerHTML = '';
+
+    cart.forEach((item, index) => {
+        total += item.price;
+
+        itemsContainer.innerHTML += `
+            <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl">
+                <div>
+                    <p class="font-medium">${item.name}</p>
+                    <p class="text-sm text-gray-500">S/ ${item.price.toFixed(2)}</p>
+                </div>
+
+                <button onclick="removeFromCart(${index})" class="text-red-500 text-sm">
+                    Eliminar
+                </button>
+            </div>
+        `;
+    });
+
+    totalEl.innerText = `S/ ${total.toFixed(2)}`;
+}
+
+function checkout(){
+    if(cart.length === 0){
+        alert("Tu carrito está vacío");
+        return;
+    }
+
+    let total = 0;
+    let msg = "Hola, quiero realizar este pedido:\n\n";
+
+    cart.forEach(item => {
+        total += item.price;
+        msg += `• ${item.name} - S/ ${item.price.toFixed(2)}\n`;
+    });
+
+    msg += `\n💰 Total: S/ ${total.toFixed(2)}`;
+
+    sendWhatsApp(msg);
+}
+
+updateCartUI();
+</script>
+
+
+<div id="cart-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold">Carrito</h3>
+            <button onclick="toggleCart()" class="text-gray-400">✕</button>
+        </div>
+
+        <div id="cart-items" class="mb-6 space-y-3 max-h-60 overflow-y-auto">
+            <p class="text-gray-500 text-center">Tu carrito está vacío</p>
+        </div>
+
+        <div class="border-t pt-4">
+            <div class="flex justify-between font-bold text-lg mb-4">
+                <span>Total:</span>
+                <span id="cart-total">S/ 0.00</span>
+            </div>
+
+            <div class="flex gap-2 mb-3">
+                <button onclick="clearCart()" class="flex-1 py-3 rounded-full border border-gray-300">
+                    Vaciar
+                </button>
+                <button onclick="checkout()" class="flex-1 bg-accent text-white py-3 rounded-full font-bold">
+                    Pedir por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
