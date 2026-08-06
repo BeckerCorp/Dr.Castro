@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Servicios | 3B Dental</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D47A1',       /* Azul corporativo */
+                        lightBlue: '#42A5F5',     /* Azul claro */
+                        accentOrange: '#FB8C00',  /* Naranja corporativo */
+                        neutralGray: '#90A4AE'    /* Gris corporativo */
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- ========================================== -->
+    <!-- ZONA EDITABLE: LOGO Y CABECERA / NAVBAR -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- LOGO EDITABLE -->
+            <a href="index.html" class="flex items-center gap-2">
+                <!-- COMENTARIO IMAGEN: LOGOTIPO PRINCIPAL -->
+                
+                <div class="bg-primary text-white font-extrabold text-2xl px-3 py-1 rounded-xl flex items-center shadow"> 
+                  <img class="h-16 w-16" src="JorgeCastro.jpg" alt="Logotipo 3B" class="h-8 w-auto">
+               </div>
+
+                <div>
+                    <span class="text-[10px] text-gray-500 font-semibold tracking-widest uppercase">Odontología al Precio Justo</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-6 font-semibold text-sm">
+                <a href="#catalogo" class="text-primary hover:text-accentOrange transition">Tratamientos</a>
+                <a href="#nosotros" class="text-gray-600 hover:text-accentOrange transition">Nosotros</a>
+                <a href="#contacto" class="bg-accentOrange text-white px-5 py-2.5 rounded-full shadow-lg hover:bg-orange-600 transition">Agendar Cita</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- HERO SECTION (TÍTULO DE CATÁLOGO) -->
+    <!-- ========================================== -->
+    <section class="relative bg-gradient-to-br from-primary via-blue-900 to-lightBlue text-white py-16 px-4">
+        <div class="max-w-7xl mx-auto text-center space-y-4">
+            <span class="bg-accentOrange text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow">Catálogo Oficial de Servicios</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                Nuestros Tratamientos <span class="text-accentOrange">Dentales</span>
+            </h1>
+            <p class="text-lg text-gray-100 max-w-2xl mx-auto">
+                Calidad, confianza y precios transparentes para toda la familia. Conoce cada uno de nuestros servicios especializados.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN DE TRATAMIENTOS (ZONA EDITABLE) -->
+    <!-- ========================================== -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Tratamiento 1: Consulta Dental -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO TRATAMIENTO CONSULTA DENTAL -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="consulta.png">
+                        <span class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">Básico</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Consulta Dental</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/50</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Diagnóstico General + Fotografías</li>
+                            <li>• Si te atiendes el mismo día , Es gratis!!!</li>
+                            <li class="text-accentOrange font-semibold">• Costo por paciente</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 2: Emergencia Dental -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO TRATAMIENTO EMERGENCIA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="emergencia.png">
+                        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Urgente</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Emergencia Dental</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/50</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento para dolor (Costo por Unidad)</li>
+                            <li>• Pegado de Restauraciones</li>
+                            <li>• Retiro de Brackets, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 3: Odontología Pediátrica -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO TRATAMIENTO PEDIÁTRICO -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="caries niño.png" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-accentOrange text-white text-xs font-bold px-3 py-1 rounded-full shadow">Infantil</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Odontología Pediátrica</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">50% <span class="text-xs font-normal text-gray-500">de los precios en adultos</span></div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• 50% de los precios en Adultos</li>
+                            <li>• Duración de citas cortas y amigables para niños</li>
+                            <li class="text-red-500 font-semibold">⚠️ Evaluación previa necesaria para cualquier tratamiento</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 4: Prótesis Totales -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO PRÓTESIS TOTALES -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img class="w-full h-auto absolute top-0 -translate-y-[85px]" src="totales.jpg">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Prótesis Totales</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 1,000</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 3 a 4 citas</li>
+                            <li>• Material: Acrílica o Acrílica con malla metálica</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 5: Prótesis Parcial Metálica -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO PRÓTESIS PARCIAL -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="metalica.png" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Prótesis Parcial Metálica</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 1,000</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Reconstructivo (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 3 a 4 citas</li>
+                            <li>• Material: Metal + acrílico</li>
+                            <li>• Suele necesitar desgaste dental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 6: Prótesis Wiplax y Flexibles -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO PRÓTESIS WIPLAX -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img class="w-full h-auto absolute top-0 -translate-y-[85px]" src="flexible.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Prótesis Wiplax y Flexibles</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 600 - 900</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Generalmente hecho en 3 a 4 citas</li>
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Material: Acrílico (S/.600) ó Nylon Acrílico Flexible (S/.900)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 7: Coronas Metálicas -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CORONAS METÁLICAS -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="coronas-dentales-metal-porcelana-cdmx.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Coronas Metálicas</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 450</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 3 citas</li>
+                            <li>• Material: Metal + Pintura ceramica del color del diente</li>
+                             <li>• Suele necesitar desgaste dental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 8: Coronas de Metal Blanco (Zirconio) -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CORONAS ZIRCONIO -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="coronas-zirconio.png" alt="Coronas Zirconio" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Coronas de Metal Blanco</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 900</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Reconstructivo (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 3 citas</li>
+                            <li>• Material: Zirconio de alta resistencia</li>
+                            <li>• Suele necesitar desgaste dental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 9: Coronas Cerámica -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CORONAS CERÁMICA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="coronas porcelana.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Coronas Cerámica</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 1,200</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Curación de dientes dañados gravemente</li>
+                            <li>• Generalmente hecho en 3 citas</li>
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Suele necesitar desgaste dental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 10: Carillas de Porcelana -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CARILLAS PORCELANA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="carillas porcelanas.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Carillas de Porcelana</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 1,200</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 3 citas</li>
+                            <li>• Máxima naturalidad y brillo</li>
+                            <li>• Suele necesitar desgaste dental</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 11: Carillas de Resina -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CARILLAS RESINA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="carilla de resina.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Carillas de Resina</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 250</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Generalmente hecho en 2 citas</li>
+                            <li>• Sonrisa radiante y accesible</li>
+                            <li>• Suele necesitar desgaste dental minimo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 12: Fundas de Resina -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO FUNDAS RESINA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img class="w-full h-auto absolute top-0 -translate-y-[195px]"  src="resina coronas .png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Fundas de Resina</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 200</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Curación de dientes dañados gravemente</li>
+                            <li>• Generalmente hecho en 2 citas</li>
+                            <li>• Tratamiento Estético (Costo por Unidad)</li>
+                            <li>• Suele necesitar desgaste dental dependoiendo del caso</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 13: Terceras Molares (Cirugía) -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CIRUGÍA TERCERAS MOLARES -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img class="w-full h-auto absolute top-0 -translate-y-[85px]" src="juicio.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Terceras Molares (Cirugías)</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 400</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Cirugía mayor (Muelas del Juicio)</li>
+                            <li>• Generalmente hecho en una sola cita</li>
+                            <li>• Descuento aplicable desde 2 extracciones</li>
+                            <li class="text-red-500 font-semibold">⚠️ Necesita Radiografía ´o Tomografía y Diagnostico </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 14: Ortodoncia -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO ORTODONCIA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="ortodoncia.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Ortodoncia (Brackets)</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 500 <span class="text-xs font-normal text-gray-500"></span></div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Pago por Inicial de Brackets standar (S/200)  </li>
+                            <li>• Pago por instalacion de Brackets standar (S/200)  </li>
+                            <li>• Mensualidades de S/ 100 (hasta terminar tratamiento)</li>
+                            <li class="text-red-500 font-semibold">⚠️ Las Retenciones, Aparatología y tratamientos previos no están Incluidas </li>
+                            <li>• Duración estimada: desde 1 año y medio a más </li>
+                            <li>• Está promoción incluye : Profilaxis y Blanqueamiento Dental al Finalizar el Tratamiento </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 15: Endodoncias -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO ENDODONCIAS -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="endodoncia.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Endodoncias</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange"> S/320 - S/500</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Curación de dientes dañados gravemente</li>
+                            <li>• Generalmente hecho entre 1 a 3 citas</li>
+                            <li>• Incluye solo Rehabilitación en Resina de ser posible (S/.500)</li>
+                            <li class="text-red-500 font-semibold">⚠️ Necesita Radiografía y Diagnóstico</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 16: Curación Dental Simple -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CURACIÓN SIMPLE -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative" id="Resina">
+                        <img src="simple.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Curación Dental Simple</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 50</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Curación de caries simples o pequeñas</li>
+                            <li>• Generalmente hecho en una sola cita</li>
+                            <li class="text-red-500 font-semibold">⚠️ Información referencial</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 17: Curaciones Compuestas -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO CURACIONES COMPUESTAS -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="compuesta.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Curaciones Compuestas</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 100</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Curacion de caries medianas o grandes</li>
+                            <li>• Generalmente hecho en una sola cita</li>
+                            <li class="text-red-500 font-semibold">⚠️ Información referencial</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 18: Extracción Dental Simple -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO EXTRACCIÓN SIMPLE -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative" id="Extraccion">
+                        <img src="extraccion.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Extracción Dental Simple</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 50</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Procedimiento rápido y seguro</li>
+                            <li>• Generalmente hecho en una sola cita</li>
+                            <li>• No aplicable a Dientes Endodonciados</li>
+                            <li class="text-red-500 font-semibold">⚠️ Puede necesitar Radiografías</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 19: Limpieza Dental -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO LIMPIEZA DENTAL -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative" id="Limpieza">
+                        <img src="limpieza dental.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Limpieza Dental</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 100</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Limpieza total de todos los dientes</li>
+                            <li>• Generalmente hecho en una sola cita</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 20: Blanqueamiento Dental -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO BLANQUEAMIENTO -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="blanqueamiento dental.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Blanqueamiento Dental</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 250</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Clareamiento de los dientes visibles al sonreír</li>
+                            <li>• Generalmente hecho en 1 o 2 citas</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+            <!-- Tratamiento 21: Diseño de Sonrisa -->
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-1">
+                <div>
+                    <!-- COMENTARIO IMAGEN: FOTO DISEÑO DE SONRISA -->
+                    <div class="h-48 bg-gray-200 overflow-hidden relative">
+                        <img src="diseño de sonrisa.png">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-primary">Diseño de Sonrisa</h3>
+                        <!-- COMENTARIO PRECIO: EDITAR TARIFA -->
+                        <div class="text-2xl font-extrabold text-accentOrange">S/ 200</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5">
+                            <li>• Planeación para cambiar la forma de los dientes</li>
+                            <li>• Incluye fotografías y diseño en computadora</li>
+                            <li class="text-red-500 font-semibold">⚠️ Solo incñluye diseño y planeación más no ejecución</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contacto" class="block text-center w-full bg-primary hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition text-sm">Agendar Cita</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FORMULARIO DE RESERVAS (WHATSAPP +51949357095) -->
+    <!-- ========================================== -->
+    <section id="contacto" class="bg-gradient-to-tr from-primary to-blue-900 text-white py-20 px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="max-w-3xl mx-auto bg-white text-gray-800 rounded-3xl shadow-2xl p-8 sm:p-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-primary">Reserva tu Cita en 3B Dental</h2>
+                <p class="text-gray-600 text-sm mt-1">Envía tu solicitud directamente a nuestro WhatsApp oficial.</p>
+            </div>
+            <form id="citaForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2">Nombre y Apellido</label>
+                    <input type="text" id="nombre" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-accentOrange outline-none text-sm" placeholder="Ej. Ana Torres">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2">Número de Celular / WhatsApp</label>
+                    <input type="tel" id="telefono" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-accentOrange outline-none text-sm" placeholder="Ej. 949357095">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2">Tratamiento Seleccionado</label>
+                    <select id="tratamiento" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-accentOrange outline-none text-sm">
+                        <option value="Consulta Dental">Consulta Dental (S/50)</option>
+                        <option value="Emergencia Dental">Emergencia Dental (S/50)</option>
+                        <option value="Odontología Pediátrica">Odontología Pediátrica</option>
+                        <option value="Prótesis Totales">Prótesis Totales (S/ 1,000)</option>
+                        <option value="Prótesis Parcial Metálica">Prótesis Parcial Metálica (S/ 1,000)</option>
+                        <option value="Prótesis Wiplax y Flexibles">Prótesis Wiplax y Flexibles (S/ 600 - 900)</option>
+                        <option value="Coronas Metálicas">Coronas Metálicas (S/ 450)</option>
+                        <option value="Coronas de Metal Blanco">Coronas de Metal Blanco (S/ 900)</option>
+                        <option value="Coronas Cerámica">Coronas Cerámica (S/ 1,200)</option>
+                        <option value="Carillas de Porcelana">Carillas de Porcelana (S/ 1,200)</option>
+                        <option value="Carillas de Resina">Carillas de Resina (S/ 250)</option>
+                        <option value="Fundas de Resina">Fundas de Resina (S/ 200)</option>
+                        <option value="Terceras Molares (Cirugía)">Terceras Molares - Cirugía (S/ 400)</option>
+                        <option value="Ortodoncia">Ortodoncia / Brackets (S/ 500 )</option>
+                        <option value="Endodoncias">Endodoncias (S/ 320 - 420)</option>
+                        <option value="Curación Dental Simple">Curación Dental Simple (S/ 50)</option>
+                        <option value="Curaciones Compuestas">Curaciones Compuestas (S/ 100)</option>
+                        <option value="Extracción Dental Simple">Extracción Dental Simple (S/ 50)</option>
+                        <option value="Limpieza Dental">Limpieza Dental (S/ 100)</option>
+                        <option value="Blanqueamiento Dental">Blanqueamiento Dental (S/ 250)</option>
+                        <option value="Diseño de Sonrisa">Diseño de Sonrisa (S/ 200)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-accentOrange hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition duration-200 text-base">
+                    📱 Enviar Cita por WhatsApp 
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================== -->
+    <footer class="bg-gray-900 text-white py-8 px-4 text-center text-xs text-gray-400">
+        <p class="font-bold text-sm text-lightBlue">Dr. Jorge Castro</p>
+        <p class="mt-1">Odontología al Precio Justo | Lima, Perú</p>
+        <p class="mt-4 text-gray-500">© 2026 Dr. Jorge Castro. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT DE WHATSAPP -->
+    <script>
+        document.getElementById('citaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const tratamiento = document.getElementById('tratamiento').value;
+
+            const mensaje = `¡Hola Dr. Castro! 👋 Mi nombre es *${nombre}* (Tel: ${telefono}). Deseo agendar una cita para el tratamiento de: *${tratamiento}*. ¿Me pueden dar disponibilidad por favor?`;
+            const url = `https://wa.me/51914934518?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>
