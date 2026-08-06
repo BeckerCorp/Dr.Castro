@@ -2,318 +2,769 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dr.Castro | Agendar Citas & Tienda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3B Dental | Odontología al precio justo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0D47A1', // Azul corporativo
+                        secondary: '#42A5F5', // Azul Claro
+                        accent: '#FB8C00', // Naranja
+                        accentHover: '#E65100', // Naranja oscuro para hover
+                        grayBrand: '#90A4AE', // Gris corporativo
+                        light: '#F4F9FF', // Fondo suave azulado
+                        whatsapp: '#25D366', // Verde WhatsApp
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .bg-primary { background-color: #0D47A1; }
-        .text-primary { color: #0D47A1; }
-        .bg-secondary { background-color: #42A5F5; }
-        .bg-accent { background-color: #FB8C00; }
-        .text-accent { color: #FB8C00; }
-        .bg-neutral { background-color: #90A4AE; }
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        html { scroll-behavior: smooth; }
+        .hero-pattern {
+            background-color: #F4F9FF;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2342A5F5' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        /* Estilo para simular la sonrisa del logo */
+        .smile-curve {
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border: 3px solid;
+            border-top: 0;
+            border-color: #42A5F5;
+            height: 12px;
+            width: 100%;
+            margin-top: 2px;
+        }
+        /* Nuevos estilos para el Chatbot y Scrollbar */
+        .chat-scroll::-webkit-scrollbar { width: 6px; }
+        .chat-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background: #90A4AE; border-radius: 8px; }
+        .bot-message { border-bottom-left-radius: 4px !important; }
+        .user-message { border-bottom-right-radius: 4px !important; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-    <nav class="fixed w-full z-50 glass shadow-md py-4 px-6 flex justify-between items-center h-32 w-64 overflow-hidden">
-        <img src="JorgeCastro.jpg"
-     alt="Logo"
-     class="h-64 w-64">
-        <button onclick="toggleCart()" class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition">
-            <i data-lucide="shopping-cart" class="w-6 h-6 text-primary"></i>
-            <span id="cart-count" class="absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
-        </button>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-24">
+                <div class="flex items-center">
+                    <a href="#" class="flex flex-col justify-center items-center">
+                        <div class="flex items-baseline gap-[2px]">
+                            <span class="font-heading font-extrabold text-5xl text-secondary leading-none">D</span>
+                            <span class="font-heading font-extrabold text-5xl text-accent leading-none">R.</span>
+                        </div>
+                        <div class="smile-curve w-3/4 mb-1"></div>
+                        <span class="font-heading font-bold text-2xl text-primary tracking-tight leading-none mt-1">Jorge Castro</span>
+                        <span class="text-[0.5rem] font-sans text-primary tracking-widest leading-none uppercase mt-1 font-semibold">Consultorio Dental</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-accent font-semibold transition">Inicio</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-accent font-semibold transition">Nosotros</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-accent font-semibold transition">Servicios</a>
+                    <a href="#blog" class="text-gray-600 hover:text-accent font-semibold transition">Blog</a>
+                    <a href="#citas" class="bg-accent hover:bg-accentHover text-white px-6 py-2.5 rounded-full font-heading font-bold transition shadow-lg flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i> Agendar Cita
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent focus:outline-none">
+                        <i class="fa-solid fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#inicio" class="block px-4 py-3 text-gray-600 font-semibold hover:bg-light hover:text-primary">Inicio</a>
+            <a href="#nosotros" class="block px-4 py-3 text-gray-600 font-semibold hover:bg-light hover:text-primary">Nosotros</a>
+            <a href="#servicios" class="block px-4 py-3 text-gray-600 font-semibold hover:bg-light hover:text-primary">Servicios</a>
+            <a href="#blog" class="block px-4 py-3 text-gray-600 font-semibold hover:bg-light hover:text-primary">Blog</a>
+            <a href="#citas" class="block px-4 py-4 bg-accent text-white font-heading font-bold text-center text-lg">Agendar Cita</a>
+        </div>
     </nav>
 
-    <header class="pt-32 pb-16 px-6 text-center bg-white">
-         <img
-            src="portada1.png"
-            class="mx-auto mt-0 mb-8 rounded-3xl shadow-xl max-w-4xl w-full">
-        <div class="flex flex-col gap-3 max-w-xs mx-auto">
-            <button onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})" class="bg-accent text-white font-bold py-4 px-8 rounded-full shadow-lg">
-                Agendar Cita
-            </button>
-            <button onclick="document.getElementById('tienda').scrollIntoView({behavior:'smooth'})" class="bg-primary text-white font-bold py-4 px-8 rounded-full shadow-lg">
-                Ver Tienda
-            </button>
-        </div>
-    </header>
-
-    <section id="servicios" class="py-16 px-6">
-        <h3 class="text-2xl font-bold text-center text-primary mb-10">Nuestros Servicios</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <img src="consulta.png" class="w-full h-40 object-cover rounded-xl mb-4">
-                <h4 class="text-xl font-semibold mb-2">Consulta General</h4>
-                <button onclick="showGeneralPolicy()" class="text-primary font-bold hover:underline">Reservar ahora</button>
+    <section id="inicio" class="pt-32 pb-16 md:pt-40 md:pb-24 hero-pattern overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-secondary/10 text-primary font-bold text-sm mb-4 border border-secondary/20">
+                        ¡Sonrisa perfecta a precio justo!
+                    </span>
+                    <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-primary">
+                        Tu sonrisa, <br><span class="text-accent">Nuestra prioridad</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg font-medium">
+                        Atención profesional, moderna y cercana para ti y toda tu familia. Olvídate del miedo al dentista con nuestra atención rápida, amable y al alcance de tu bolsillo.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#citas" class="bg-accent hover:bg-accentHover text-white text-center px-8 py-4 rounded-full font-heading font-bold transition shadow-lg text-lg flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-plus"></i> Registrar Consulta
+                        </a>
+                        <a href="#servicios" class="bg-white hover:bg-gray-50 text-primary text-center px-8 py-4 rounded-full font-heading font-bold transition shadow border-2 border-primary/10 text-lg">
+                            Ver Tratamientos
+                        </a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-secondary to-primary rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                    <img src="consulta.png" alt="Paciente sonriendo en el dentista" class="relative rounded-3xl shadow-2xl object-cover h-[400px] w-full border-4 border-white">
+                    
+                    <div class="absolute bottom-6 left-[-20px] bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-100 z-30">
+                        <div class="bg-accent/10 p-3 rounded-full text-accent">
+                            <i class="fa-solid fa-shield-halved text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-grayBrand font-bold uppercase">Garantía</p>
+                            <p class="text-sm font-heading font-bold text-primary">Precios sin sorpresas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -right-6 md:-right-12 w-36 md:w-48 z-40">
+                        <img src="Untitled design.png" alt="Mascota Sonrisín dando la bienvenida" class="w-32 h-auto drop-shadow-2xl hover:scale-110 hover:-rotate-3 transition-transform duration-300">
+                    </div>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <img src="especialidades.png" class="w-full h-40 object-cover rounded-xl mb-4">
-                <h4 class="text-xl font-semibold mb-2">Consulta Especialidad</h4>
-                <button onclick="showSpecialtyPolicy()" class="text-primary font-bold hover:underline">Reservar ahora</button>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-20 bg-white overflow-hidden">
+                <div class="md:w-1/3 flex justify-center relative">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-light p-10 rounded-3xl shadow-sm border border-secondary/20 hover:shadow-md transition relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition duration-500">
+                        <i class="fa-solid fa-tooth text-9xl text-primary"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-primary mb-4">Nuestra Misión</h3>
+                        <p class="text-gray-600 leading-relaxed font-medium">
+                            Brindar atención odontológica de calidad mediante tecnología moderna, trato humano y precios justos. Asegurando que cada paciente reciba atención rápida y sin demoras desde el primer contacto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-grayBrand/30 hover:shadow-md transition relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition duration-500">
+                        <i class="fa-regular fa-eye text-9xl text-grayBrand"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-secondary text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-primary mb-4">Nuestra Visión</h3>
+                        <p class="text-gray-600 leading-relaxed font-medium">
+                            Convertirnos en una clínica reconocida por la innovación, la confianza y la excelencia en la atención odontológica. Acompañando a las familias de Lima en cada etapa de su salud bucal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 pt-12 border-t border-gray-100 grid grid-cols-2 md:grid-cols-6 gap-6 text-center">
+                <div><i class="fa-solid fa-handshake text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Honestidad</p></div>
+                <div><i class="fa-solid fa-users text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Cercanía</p></div>
+                <div><i class="fa-solid fa-user-doctor text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Profesionalismo</p></div>
+                <div><i class="fa-solid fa-lightbulb text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Innovación</p></div>
+                <div><i class="fa-solid fa-heart text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Compromiso</p></div>
+                <div><i class="fa-solid fa-face-smile text-3xl text-secondary mb-2"></i><p class="font-heading font-bold text-sm text-primary">Empatía</p></div>
             </div>
         </div>
     </section>
 
-    <section id="tienda" class="py-16 px-6 bg-white">
-        <h3 class="text-2xl font-bold text-center text-primary mb-10">Tienda</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                <img src="cepillo electrico.jpg" class="h-auto w-auto object-cover rounded-xl mb-4">
-                <h4 class="font-bold">Cepillo Electrico</h4>
-                <p class="text-gray-500 mb-4">S/.50.00</p>
-                <button onclick="addToCart('Cepillo Electrico', 50.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+    <section id="servicios" class="py-20 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">Soluciones Económicas</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Nuestros Tratamientos</h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg font-medium">
+                    Precios transparentes y justos para toda la familia. Consulta y diagnóstico integral completo.
+                </p>
             </div>
-            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                <img src="pasta.png" class="h-80 w-auto object-cover rounded-xl mb-4">
-                <h4 class="font-bold">Pasta de Hidroxiapatita</h4>
-                <p class="text-gray-500 mb-4">S/30.00</p>
-                <button onclick="addToCart('Pasta de Hidroxiapatita', 30.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl overflow-hidden shadow border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="limpieza.png" alt="Limpieza Dental" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-accent text-white font-heading font-bold px-4 py-1.5 rounded-full shadow">¡Promoción!</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-heading text-xl font-bold text-primary leading-tight">Limpieza Dental Profunda (Profilaxis)</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6">Limpieza profesional exhaustiva para eliminar sarro, placa bacteriana y manchas. Previene caries y enfermedades.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-heading font-extrabold text-accent">¡Sólo S/ 100!</span>
+                            <a href="catalogo web.html#Limpieza" class="text-primary hover:text-accent font-bold transition"><i class="fa-solid fa-arrow-right text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="resina.jpg" alt="Curaciones con resina" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-heading text-xl font-bold text-primary leading-tight">Curaciones y Resinas Estéticas</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6">Restauraciones duraderas y de color dental de alta calidad para dientes dañados o cariados. Materiales de primera.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-heading font-extrabold text-accent">Desde S/ 50</span>
+                            <a href="catalogo web.html#Resina" class="text-primary hover:text-accent font-bold transition"><i class="fa-solid fa-arrow-right text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="especialidades.png" alt="Extracciones dentales" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-heading text-xl font-bold text-primary leading-tight">Extracciones y Demás Especialidades </h3>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-6">Procedimientos seguros y sin dolor para  piezas dentales dañadas irremediablemente. Atención de urgencias.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-heading font-bold text-grayBrand">Previa Evaluación</span>
+                            <a href="catalogo web.html#Extraccion" class="text-primary hover:text-accent font-bold transition"><i class="fa-solid fa-arrow-right text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                <img src="balsamo.png" class="h-auto w-auto object-cover rounded-xl mb-4">
-                <h4 class="font-bold">Balsamo Labial</h4>
-                <p class="text-gray-500 mb-4">S/.20.00</p>
-                <button onclick="addToCart('Balsamo Labial', 20.00)" class="w-full bg-primary text-white py-3 rounded-xl">Agregar</button>
+            
+            <div class="mt-12 text-center">
+                <a href="catalogo web.html" class="inline-flex items-center gap-2 font-heading font-bold text-primary hover:text-secondary transition text-2xl">
+                    Contamos con diferentes Especialidades <i class="fa-solid fa-circle-chevron-right text-3xl"></i>
+                </a>
             </div>
         </div>
     </section>
-    <footer class="bg-primary text-white py-12 px-6">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center  gap-6 text-center md:text-left">
-           <div class="h-32 mt-0 mb-8 flex justify-center md:justify-start items-center">
-                 <img src="logo dental remover (1).png"
-                 alt="Logo"
-                 class="h-32  mt-1  ml-20 mb-0 object-contain">
-                <p class="text-gray-200 text-sm"> Conectando contigo a través de nuestros canales oficiales.</p>
-            </div>
-            <!-- Iconos de Redes Sociales en el pie de página con mayor separación -->
-            <div class="flex gap-6">
-                <a href="https://instagram.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram" class="w-6 h-6"></i>
-                </a>
-                <a href="https://facebook.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="Facebook">
-                    <i class="fa-brands fa-facebook-f" class="w-6 h-6"></i>
-                </a>
-                <a href="https://tiktok.com" target="_blank" class="p-3.5 bg-white/15 rounded-full hover:bg-white/25 transition shadow-md" aria-label="TikTok">
-                    <i class="fa-brands fa-tiktok" class="w-6 h-6"></i>
-                </a>
+
+    <section id="citas" class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-secondary opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent opacity-20"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border-4 border-white">
+                <div class="bg-light p-10 md:w-2/5 flex flex-col justify-center border-r border-gray-200">
+                    <h3 class="font-heading text-3xl font-extrabold mb-4 text-primary">Agenda tu Cita Hoy</h3>
+                    <p class="mb-8 text-gray-600 font-medium">Completa el formulario y te conectaremos directamente por WhatsApp para confirmar tu horario ideal.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl text-accent shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-primary">Dirección</p>
+                                <p class="text-gray-600 text-sm">Lima, Perú (San Isidro)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl text-accent shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-primary">Horario</p>
+                                <p class="text-gray-600 text-sm">Lunes a Sábado: 9AM - 8PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl text-accent shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-primary">¡Llámanos Ahora!</p>
+                                <p class="text-gray-600 text-sm">Atención rápida y personalizada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-10 md:w-3/5 bg-white">
+                    <form id="appointmentForm" class="space-y-5" onsubmit="procesarFormulario(event)">
+                        <h4 class="font-heading text-2xl font-bold text-primary mb-6">Datos del Paciente</h4>
+                        
+                        <div>
+                            <label for="nombre" class="block text-sm font-bold text-grayBrand mb-1">Nombre Completo</label>
+                            <input type="text" id="nombre" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-secondary transition outline-none font-medium text-gray-800" placeholder="Ej. Juan Pérez">
+                        </div>
+                        
+                        <div>
+                            <label for="telefono" class="block text-sm font-bold text-grayBrand mb-1">Número de Celular / WhatsApp</label>
+                            <input type="tel" id="telefono" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-secondary transition outline-none font-medium text-gray-800" placeholder="999 888 777">
+                        </div>
+
+                        <div>
+                            <label for="motivo" class="block text-sm font-bold text-grayBrand mb-1">Motivo de Consulta</label>
+                            <select id="motivo" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-secondary transition outline-none bg-white font-medium text-gray-800">
+                                <option value="" disabled selected>Selecciona un tratamiento...</option>
+                                <option value="Consulta">Consulta (Evaluación)</option>
+                                <option value="Limpieza Dental / Profilaxis">Limpieza Dental / Profilaxis</option>
+                                <option value="Curación / Resina Estética">Curación / Resina Estética</option>
+                                <option value="Extracción">Extracción</option>
+                                <option value="Atención de Urgencias">Atención de Urgencias (Dolor)</option>
+                                <option value="Ortodoncia">Ortodoncia</option>
+                                <option value="Diseño de Sonrisa">Diseño de Sonrisa</option>
+                                <option value="Otro">Otro tratamiento</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="mensaje" class="block text-sm font-bold text-grayBrand mb-1">Comentario adicional (Opcional)</label>
+                            <textarea id="mensaje" rows="2" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-0 focus:border-secondary transition outline-none resize-none font-medium text-gray-800" placeholder="Ej. Quisiera agendar para este sábado..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-accent hover:bg-accentHover text-white font-heading font-extrabold text-lg py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3 mt-4">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar a WhatsApp
+                        </button>
+                        <p class="text-xs text-center text-grayBrand mt-3 font-semibold"><i class="fa-solid fa-lock"></i> Tus datos están seguros. Serás redirigido a WhatsApp.</p>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="mt-8 text-center text-xs text-gray-300 border-t border-white/10 pt-6">
-            &copy; 2026 <span style="font-size:larger;"><strong>Dr.Castro</strong></span> Todos los derechos reservados.
+    </section>
+
+    <section id="blog" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Blog & Consejos</h2>
+                    <div class="w-24 h-1.5 bg-secondary rounded-full"></div>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-accent font-bold hover:text-accentHover mt-4 md:mt-0 transition">
+                    Ver todos los artículos <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-light rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1590664095641-7fa05f689813?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Miedo al dentista" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-secondary uppercase tracking-wider">Salud Mental</span>
+                        <h3 class="font-heading text-xl font-bold text-primary mt-2 mb-3 leading-tight">Cómo perder el miedo al dentista con BiBi</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Sentir ansiedad antes de ir al dentista es muy común. En 3B Dental hemos diseñado un protocolo enfocado en la empatía y la confianza...</p>
+                        <a href="articulo-miedo-dentista.html" class="text-accent font-bold text-sm hover:underline">Leer más</a>
+                    </div>
+                </article>
+
+                <article class="bg-light rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Higiene bucal" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-secondary uppercase tracking-wider">Prevención</span>
+                        <h3 class="font-heading text-xl font-bold text-primary mt-2 mb-3 leading-tight">¿Por qué la profilaxis te ahorra dinero?</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Una limpieza profunda no solo mantiene tus dientes blancos. Eliminar el sarro a tiempo previene caries profundas que cuestan el triple de curar.</p>
+                        <a href="articulo-profilaxis.html" class="text-accent font-bold text-sm hover:underline">Leer más</a>
+                    </div>
+                </article>
+
+                <article class="bg-light rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Resinas dentales" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-secondary uppercase tracking-wider">Estética</span>
+                        <h3 class="font-heading text-xl font-bold text-primary mt-2 mb-3 leading-tight">5 Consejos para cuidar tus curaciones de resina</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">Las resinas estéticas de alta calidad son duraderas, pero requieren cuidados. Evitar alimentos extremadamente duros o bebidas muy oscuras es clave.</p>
+                        <a href="articulo-cuidados-resina.html" class="text-accent font-bold text-sm hover:underline">Leer más</a>
+                    </div>
+                </article>
+            </div>
+            
+            <a href="blog-general.html" class="md:hidden block text-center w-full bg-light text-primary font-bold py-3 mt-8 rounded-xl border border-secondary/20 hover:bg-secondary/10 transition">
+                Ver todos los artículos
+            </a>
+        </div>
+    </section>
+
+            <a href="#" class="md:hidden block text-center w-full bg-light text-primary font-bold py-3 mt-8 rounded-xl border border-secondary/20 hover:bg-secondary/10 transition">
+                Ver todos los artículos
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-white pt-16 pb-8 border-t-8 border-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="flex flex-col items-start mb-6 bg-white p-4 rounded-xl inline-block w-32">
+                        <div class="flex items-baseline gap-[2px]">
+                            <span class="font-heading font-extrabold text-3xl text-secondary leading-none">D</span>
+                            <span class="font-heading font-extrabold text-3xl text-accent leading-none">R.</span>
+                        </div>
+                        <div class="smile-curve w-1/4 mb-1 border-secondary"></div>
+                        <span class="font-heading font-bold text-xl text-primary tracking-tight leading-none mt-1">Jorge Castro</span>
+                    </a>
+                    <p class="text-light/80 text-sm mb-6 font-medium">Calidad, confianza y sonrisas para todos. Odontología al precio justo en Lima.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-accent transition text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-accent transition text-white"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center hover:bg-accent transition text-white"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 border-b border-secondary/30 pb-2 text-accent">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-light/80 font-medium">
+                        <li><a href="#inicio" class="hover:text-white hover:translate-x-1 inline-block transition">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-white hover:translate-x-1 inline-block transition">Nuestra Misión</a></li>
+                        <li><a href="#servicios" class="hover:text-white hover:translate-x-1 inline-block transition">Tratamientos</a></li>
+                        <li><a href="#blog" class="hover:text-white hover:translate-x-1 inline-block transition">Blog Dental</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 border-b border-secondary/30 pb-2 text-accent">Contacto</h4>
+                    <ul class="space-y-4 text-sm text-light/80 font-medium">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-secondary"></i>
+                            <span>Av.Petit Thouars 3249, 3er Piso,<br>San Isidro , Lima, Perú</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-secondary"></i>
+                            <span>+51 914934518</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-secondary"></i>
+                            <span>citas@3bdental.pe</span>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+
+            <div class="border-t border-secondary/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-light/60 font-medium">
+                
+                <p class="cursor-default select-none hover:text-white transition" ondblclick="pedirPasswordAdmin()">&copy; 2026 Dr. Jorge Castro. Todos los derechos reservados.</p>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition">Términos de Servicio</a>
+                    <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div id="general-policy-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-6">
-            <h3 class="text-xl font-bold mb-4 text-primary" id="modal-title">Aviso de Consulta</h3>
-            <p class="text-gray-600 mb-6" id="modal-text">La consulta tiene un costo de S/ 50.00. <b>Nota: Si te atiendes en el local el mismo día, ¡es GRATIS!</b></p>
-            <div class="flex gap-4">
-                <button onclick="closeModal('general-policy-modal')" class="flex-1 py-3 rounded-full border">Cancelar</button>
-                <button id="modal-confirm-btn" class="flex-1 py-3 rounded-full bg-accent text-white font-bold">Continuar</button>
-            </div>
-        </div>
-    </div>
+    <button id="chatbot-trigger" onclick="toggleChatbot()" class="fixed bottom-6 right-6 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-secondary hover:scale-110 transition-transform z-40 border-2 border-white group">
+        <i class="fa-solid fa-robot text-3xl group-hover:hidden"></i>
+        <img src="ketta2,png.png" alt="BiBí" class="w-16 h-16 rounded-full hidden group-hover:block object-cover">
+        <span class="absolute -top-2 -left-2 bg-accent text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse shadow-md">¡Hola!</span>
+    </button>
 
-    <div id="booking-form-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
-            <h3 class="text-xl font-bold mb-4 text-primary">Detalles de Cita</h3>
-            <form id="booking-form" class="space-y-4">
-                <input type="text" id="b-name" placeholder="Tu nombre" required class="w-full p-3 bg-gray-100 rounded-xl">
-                <input type="tel" id="b-phone" placeholder="Tu teléfono" required class="w-full p-3 bg-gray-100 rounded-xl">
-                <select id="b-urgency" class="w-full p-3 bg-gray-100 rounded-xl"><option value="No">No es urgente</option><option value="Sí">Es urgente</option></select>
-                <input type="datetime-local" id="b-datetime" required class="w-full p-3 bg-gray-100 rounded-xl">
-                <textarea id="b-desc" placeholder="Motivo de la consulta" class="w-full p-3 bg-gray-100 rounded-xl"></textarea>
-                <div class="flex gap-4 pt-4">
-                    <button type="button" onclick="closeModal('booking-form-modal')" class="flex-1 py-3 rounded-full border">Cancelar</button>
-                    <button type="submit" class="flex-1 bg-primary text-white py-3 rounded-full font-bold">Enviar</button>
+    <div id="chatbot-window" class="fixed bottom-24 right-4 sm:right-6 w-[90vw] sm:w-96 bg-white rounded-2xl shadow-2xl flex-col hidden z-50 border border-gray-200 overflow-hidden transform transition-all">
+        <div class="bg-primary text-white p-4 flex justify-between items-center shadow-md relative z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-accent shadow-sm">
+                    <img src="ketta2,png.png" alt="BiBí" class="w-full h-full object-cover">
                 </div>
-            </form>
-        </div>
-    </div>
-
-    
-<script>
-lucide.createIcons();
-
-const WHATSAPP_NUMBER = "51914934518";
-let cart = [];
-
-function sendWhatsApp(msg){
-    const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(msg)}`;
-
-    if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
-        window.location.href = url;
-    }else{
-        const w = window.open(url, "_blank", "noopener,noreferrer");
-        if(!w){
-            window.location.href = url;
-        }
-    }
-}
-
-function closeModal(id){
-    document.getElementById(id).classList.add('hidden');
-}
-
-function showGeneralPolicy(){
-    const modal = document.getElementById('general-policy-modal');
-    const btn = document.getElementById('modal-confirm-btn');
-
-    modal.classList.remove('hidden');
-
-    btn.onclick = () => {
-        closeModal('general-policy-modal');
-
-        sendWhatsApp(
-            "Hola, quiero agendar una Consulta General. Entiendo que la consulta cuesta S/50 pero es gratis si me atiendo en el local el mismo día."
-        );
-    };
-}
-
-function showSpecialtyPolicy(){
-    const modal = document.getElementById('general-policy-modal');
-    const btn = document.getElementById('modal-confirm-btn');
-
-    modal.classList.remove('hidden');
-
-    btn.onclick = () => {
-        closeModal('general-policy-modal');
-        document.getElementById('booking-form-modal').classList.remove('hidden');
-    };
-}
-
-document.getElementById('booking-form').onsubmit = function(e){
-    e.preventDefault();
-
-    const name = document.getElementById('b-name').value;
-    const phone = document.getElementById('b-phone').value;
-    const urgency = document.getElementById('b-urgency').value;
-    const date = document.getElementById('b-datetime').value;
-    const desc = document.getElementById('b-desc').value;
-
-    const msg = `Hola, quiero agendar una Consulta por Especialidad:
-
-👤 Nombre: ${name}
-📱 Teléfono: ${phone}
-⚠️ Urgente: ${urgency}
-📅 Fecha: ${date}
-📝 Motivo: ${desc}`;
-
-    closeModal('booking-form-modal');
-    sendWhatsApp(msg);
-};
-
-function toggleCart(){
-    document.getElementById('cart-modal').classList.toggle('hidden');
-}
-
-function addToCart(name, price){
-    cart.push({name, price});
-    updateCartUI();
-}
-
-function removeFromCart(index){
-    cart.splice(index, 1);
-    updateCartUI();
-}
-
-function clearCart(){
-    cart = [];
-    updateCartUI();
-}
-
-function updateCartUI(){
-    const itemsContainer = document.getElementById('cart-items');
-    const count = document.getElementById('cart-count');
-    const totalEl = document.getElementById('cart-total');
-
-    count.innerText = cart.length;
-
-    if(cart.length === 0){
-        itemsContainer.innerHTML = '<p class="text-gray-500 text-center">Tu carrito está vacío</p>';
-        totalEl.innerText = 'S/ 0.00';
-        return;
-    }
-
-    let total = 0;
-    itemsContainer.innerHTML = '';
-
-    cart.forEach((item, index) => {
-        total += item.price;
-
-        itemsContainer.innerHTML += `
-            <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl">
                 <div>
-                    <p class="font-medium">${item.name}</p>
-                    <p class="text-sm text-gray-500">S/ ${item.price.toFixed(2)}</p>
+                    <h4 class="font-heading font-bold text-sm leading-tight">Ketta - Asistente Dental</h4>
+                    <p class="text-[10px] text-light/80"><i class="fa-solid fa-circle text-green-400 text-[8px]"></i> En línea</p>
                 </div>
-
-                <button onclick="removeFromCart(${index})" class="text-red-500 text-sm">
-                    Eliminar
-                </button>
             </div>
-        `;
-    });
-
-    totalEl.innerText = `S/ ${total.toFixed(2)}`;
-}
-
-function checkout(){
-    if(cart.length === 0){
-        alert("Tu carrito está vacío");
-        return;
-    }
-
-    let total = 0;
-    let msg = "Hola, quiero realizar este pedido:\n\n";
-
-    cart.forEach(item => {
-        total += item.price;
-        msg += `• ${item.name} - S/ ${item.price.toFixed(2)}\n`;
-    });
-
-    msg += `\n💰 Total: S/ ${total.toFixed(2)}`;
-
-    sendWhatsApp(msg);
-}
-
-updateCartUI();
-</script>
-
-
-<div id="cart-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-end sm:items-center justify-center p-4">
-    <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold">Carrito</h3>
-            <button onclick="toggleCart()" class="text-gray-400">✕</button>
+            <button onclick="toggleChatbot()" class="text-white hover:text-accent transition"><i class="fa-solid fa-xmark text-xl"></i></button>
         </div>
+        
+        <div id="chat-messages" class="p-4 h-80 overflow-y-auto bg-light chat-scroll flex flex-col gap-3"></div>
 
-        <div id="cart-items" class="mb-6 space-y-3 max-h-60 overflow-y-auto">
-            <p class="text-gray-500 text-center">Tu carrito está vacío</p>
+        <div id="chat-input-area" class="p-3 bg-white border-t border-gray-200 flex gap-2">
+            <input type="text" id="chat-input" class="flex-1 bg-gray-50 border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-secondary transition text-gray-800" placeholder="Escribe tu respuesta..." onkeypress="handleEnter(event)">
+            <button onclick="enviarMensajeUsuario()" class="bg-accent hover:bg-accentHover text-white w-10 h-10 rounded-xl flex items-center justify-center transition shadow-md">
+                <i class="fa-solid fa-paper-plane text-sm"></i>
+            </button>
         </div>
+        <div id="chat-quick-replies" class="p-3 bg-white border-t border-gray-200 hidden flex-wrap gap-2 justify-end"></div>
+    </div>
 
-        <div class="border-t pt-4">
-            <div class="flex justify-between font-bold text-lg mb-4">
-                <span>Total:</span>
-                <span id="cart-total">S/ 0.00</span>
+    <div id="admin-modal" class="fixed inset-0 bg-gray-900/80 z-[100] hidden flex items-center justify-center backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-6xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-primary text-white p-6 flex justify-between items-center">
+                <div>
+                    <h2 class="font-heading text-2xl font-bold flex items-center gap-3"><i class="fa-solid fa-server"></i> Sistema de Recepción de Citas</h2>
+                    <p class="text-sm text-light/80">Gestión, almacenamiento y filtrado de pacientes interesados</p>
+                </div>
+                <button onclick="cerrarPanelAdmin()" class="text-white hover:text-accent transition text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="p-6 bg-gray-50 border-b border-gray-200 flex flex-col sm:flex-row gap-4 justify-between items-center">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <label class="font-bold text-primary text-sm whitespace-nowrap"><i class="fa-solid fa-filter"></i> Filtro de Interés:</label>
+                    <select id="filtro-tratamiento" onchange="renderizarTablaAdmin()" class="border border-gray-300 bg-white rounded-lg px-4 py-2 text-sm font-medium focus:outline-none focus:border-secondary flex-1 shadow-sm text-gray-800">
+                        <option value="Todos">Mostrar Todos los Intereses</option>
+                        <option value="Consulta">Consulta / Evaluación</option>
+                        <option value="Limpieza">Limpieza Dental / Profilaxis</option>
+                        <option value="Curación">Curaciones y Resinas</option>
+                        <option value="Ortodoncia">Ortodoncia</option>
+                        <option value="Urgencia">Urgencias (Dolor)</option>
+                    </select>
+                </div>
+                <div class="text-sm text-gray-600 font-medium bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200">
+                    Total Registros: <span id="total-registros" class="font-bold text-accent text-lg">0</span>
+                </div>
             </div>
 
-            <div class="flex gap-2 mb-3">
-                <button onclick="clearCart()" class="flex-1 py-3 rounded-full border border-gray-300">
-                    Vaciar
-                </button>
-                <button onclick="checkout()" class="flex-1 bg-accent text-white py-3 rounded-full font-bold">
-                    Pedir por WhatsApp
-                </button>
+            <div class="p-0 overflow-auto flex-1 bg-white">
+                <table class="w-full text-left border-collapse min-w-max">
+                    <thead class="bg-gray-100/50 sticky top-0 shadow-sm z-10">
+                        <tr>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Fecha de Ingreso</th>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Canal (Origen)</th>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Paciente</th>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Teléfono</th>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Tratamiento de Interés</th>
+                            <th class="p-4 text-xs font-bold text-primary uppercase tracking-wider border-b">Estado del Sistema</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-citas-body" class="divide-y divide-gray-100 text-sm">
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
 
+    <script>
+        // URL de tu proyecto de Google Apps Script
+        const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyIY2M3DMV3KNARKkjkeyukl6Ge8a03dKRNckbxipLjVPBDbfYAAKHeU0JbdYTXD1AGPg/exec';
+
+        // Lógica del menú móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { menu.classList.add('hidden'); });
+        });
+
+        // BASE DE DATOS LOCAL Y EN NUBE
+        let citasRegistradas = [
+            { fecha: new Date().toLocaleString(), origen: 'Formulario Web', nombre: 'Ana López (Ejemplo)', telefono: '949357095', motivo: 'Ortodoncia', estado: 'Aviso Enviado a Clínica' }
+        ];
+
+        // FUNCIÓN QUE ENVÍA LOS DATOS A GOOGLE SHEETS EN SEGUNDO PLANO
+        function guardarEnGoogleSheets(datosCita) {
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datosCita)
+            }).then(() => {
+                console.log('Cita guardada correctamente en Google Sheets.');
+            }).catch(err => console.error('Error al guardar en Google Sheets:', err));
+        }
+
+        // LÓGICA DEL FORMULARIO CLÁSICO
+        function procesarFormulario(event) {
+            event.preventDefault(); 
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const motivo = document.getElementById('motivo').value;
+            const mensajeAdicional = document.getElementById('mensaje').value;
+
+            const nuevaCita = {
+                fecha: new Date().toLocaleString(), 
+                origen: 'Formulario Web',
+                nombre: nombre, 
+                telefono: telefono, 
+                motivo: motivo + (mensajeAdicional.trim() !== '' ? ` (Nota: ${mensajeAdicional})` : ''), 
+                estado: 'Aviso Enviado a Clínica'
+            };
+
+            citasRegistradas.push(nuevaCita);
+
+            // 🟢 Guardar en Google Sheets de forma permanente
+            guardarEnGoogleSheets(nuevaCita);
+
+            const numeroDestino = '51914934518'; 
+            let texto = `*¡NUEVA ALERTA CRM WEB!* 🚨🦷\n\n*Paciente:* ${nombre}\n*Teléfono:* ${telefono}\n*Interés:* ${motivo}\n`;
+            if (mensajeAdicional.trim() !== '') texto += `\n*Nota del paciente:* ${mensajeAdicional}`;
+            texto += `\n\n_Registro añadido al CRM. Por favor contactar al paciente de inmediato._`;
+
+            window.open(`https://wa.me/${numeroDestino}?text=${encodeURIComponent(texto)}`, '_blank');
+            document.getElementById('appointmentForm').reset();
+        }
+
+        // LÓGICA DEL ASISTENTE VIRTUAL (BiBí)
+        let chatStep = 0, tempUserData = {};
+        const chatMessages = document.getElementById('chat-messages'), chatInput = document.getElementById('chat-input');
+        const inputArea = document.getElementById('chat-input-area'), quickReplies = document.getElementById('chat-quick-replies');
+
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot-window');
+            chatbot.classList.toggle('hidden');
+            if(!chatbot.classList.contains('hidden') && chatStep === 0) iniciarChat();
+        }
+
+        function addBotMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'bg-white text-gray-800 p-3.5 rounded-2xl bot-message shadow text-[13px] self-start max-w-[85%] border border-secondary/20 font-medium font-sans';
+            msgDiv.innerHTML = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'bg-primary text-white p-3.5 rounded-2xl user-message shadow text-[13px] self-end max-w-[85%] font-medium font-sans';
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showQuickReplies(options) {
+            inputArea.classList.add('hidden'); quickReplies.classList.remove('hidden'); quickReplies.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'bg-light text-primary border border-secondary/40 hover:bg-secondary hover:text-white text-xs font-bold py-2 px-3 rounded-xl transition shadow-sm';
+                btn.textContent = opt; btn.onclick = () => { addUserMessage(opt); procesarPasoChat(opt); };
+                quickReplies.appendChild(btn);
+            });
+        }
+
+        function hideQuickReplies() {
+            quickReplies.classList.add('hidden'); inputArea.classList.remove('hidden'); chatInput.focus();
+        }
+
+        function iniciarChat() {
+            chatMessages.innerHTML = ''; chatStep = 1; tempUserData = { origen: 'Chatbot (Ketta)' };
+            setTimeout(() => {
+                addBotMessage("¡Hola! Soy Ketta , el asistente virtual del Dr. Jorge Castro.");
+                setTimeout(() => {
+                    addBotMessage("Estoy aquí para recopilar tus datos y enviarlos a la clínica para coordinar tu cita. ¿Cuál es tu nombre y apellido?");
+                    hideQuickReplies();
+                }, 800);
+            }, 400);
+        }
+
+        function handleEnter(e) { if(e.key === 'Enter') enviarMensajeUsuario(); }
+
+        function enviarMensajeUsuario() {
+            const text = chatInput.value.trim();
+            if(!text) return;
+            addUserMessage(text); chatInput.value = ''; procesarPasoChat(text);
+        }
+
+        function procesarPasoChat(input) {
+            if(chatStep === 1) {
+                tempUserData.nombre = input; chatStep = 2;
+                setTimeout(() => { addBotMessage(`¡Mucho gusto, ${input.split(' ')[0]}! 😊`);
+                    setTimeout(() => { addBotMessage("¿Cuál es tu número de celular (o WhatsApp) para que nuestro equipo te contacte?"); }, 600);
+                }, 600);
+            } 
+            else if (chatStep === 2) {
+                tempUserData.telefono = input; chatStep = 3;
+                setTimeout(() => {
+                    addBotMessage("¡Anotado! 📝 Ahora dime, ¿Qué tratamiento te interesa o por qué motivo nos visitas?");
+                    showQuickReplies(["Consulta", "Limpieza Dental / Profilaxis", "Curación / Resinas", "Ortodoncia", "Atención de Urgencias (Dolor)"]);
+                }, 600);
+            }
+            else if (chatStep === 3) {
+                tempUserData.motivo = input; chatStep = 4;
+                
+                const nuevaCita = { 
+                    fecha: new Date().toLocaleString(), 
+                    origen: tempUserData.origen, 
+                    nombre: tempUserData.nombre, 
+                    telefono: tempUserData.telefono, 
+                    motivo: tempUserData.motivo, 
+                    estado: 'Pendiente de llamada' 
+                };
+
+                citasRegistradas.push(nuevaCita);
+
+                // 🟢 SE GUARDA EN GOOGLE SHEETS AQUÍ MISMO
+                // Garantiza que la cita quede registrada aun si el usuario dice "No, esperaré su llamada" o cierra la ventana.
+                guardarEnGoogleSheets(nuevaCita);
+
+                setTimeout(() => { addBotMessage("¡Perfecto! Ya guardé tu información de forma segura. 🔒");
+                    setTimeout(() => {
+                        addBotMessage("He enviado el aviso al equipo de recepción. ¿Deseas abrir WhatsApp para enviarles un mensaje directo ahora mismo y acelerar la atención?");
+                        showQuickReplies(["Sí, enviar mis datos", "No, esperaré su llamada"]);
+                    }, 800);
+                }, 600);
+            }
+            else if (chatStep === 4) {
+                hideQuickReplies(); inputArea.classList.add('hidden');
+                if(input === "Sí, enviar mis datos") {
+                    addBotMessage("¡Genial! Abriendo WhatsApp... ¡Nos vemos pronto en el Consultoriol! 👋");
+                    
+                    const texto = `*¡NUEVA ALERTA CRM CHATBOT!* 🚨🐶\nSoy Ketta. Paciente interesado:\n\n*Nombre:* ${tempUserData.nombre}\n*Teléfono:* ${tempUserData.telefono}\n*Interés:* ${tempUserData.motivo}`;
+                    setTimeout(() => { window.open(`https://wa.me/51949357095?text=${encodeURIComponent(texto)}`, '_blank'); toggleChatbot(); chatStep=0; }, 1500);
+                } else {
+                    addBotMessage("¡Entendido! Nuestro personal ya tiene tus datos registrados y te llamará pronto. ¡Que tengas un gran día! 💙");
+                    setTimeout(() => { toggleChatbot(); chatStep=0; }, 4000);
+                }
+            }
+        }
+
+        // LÓGICA DEL PANEL DE ADMINISTRACIÓN (CRM) OCULTO
+        function pedirPasswordAdmin() {
+            const pass = prompt("🔒 Acceso Restringido para Clínica. Ingrese la contraseña:");
+            if (pass === "admin123") {
+                abrirPanelAdmin();
+            } else if (pass !== null) {
+                alert("❌ Contraseña incorrecta. Acceso denegado.");
+            }
+        }
+
+        function abrirPanelAdmin() {
+            document.getElementById('admin-modal').classList.remove('hidden');
+            renderizarTablaAdmin();
+        }
+
+        function cerrarPanelAdmin() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function renderizarTablaAdmin() {
+            const tbody = document.getElementById('tabla-citas-body');
+            const filtro = document.getElementById('filtro-tratamiento').value;
+            tbody.innerHTML = '';
+
+            let datosFiltrados = citasRegistradas;
+            if (filtro !== 'Todos') {
+                datosFiltrados = citasRegistradas.filter(cita => cita.motivo.toLowerCase().includes(filtro.toLowerCase()));
+            }
+
+            document.getElementById('total-registros').textContent = datosFiltrados.length;
+
+            if (datosFiltrados.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-gray-500 font-medium">No hay pacientes registrados con este interés.</td></tr>`;
+                return;
+            }
+
+            datosFiltrados.slice().reverse().forEach(cita => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-light transition border-b border-gray-100 last:border-0';
+                const esBot = cita.origen.includes('BiBí');
+                const badgeClass = esBot ? 'bg-secondary/10 text-primary border border-secondary/30' : 'bg-accent/10 text-accentHover border border-accent/30';
+                const iconClass = esBot ? '<i class="fa-solid fa-robot mr-1"></i>' : '<i class="fa-solid fa-desktop mr-1"></i>';
+
+                tr.innerHTML = `
+                    <td class="p-4 text-gray-500 font-medium whitespace-nowrap">${cita.fecha}</td>
+                    <td class="p-4"><span class="px-3 py-1.5 rounded-lg text-xs font-bold ${badgeClass}">${iconClass} ${cita.origen}</span></td>
+                    <td class="p-4 font-bold text-gray-800">${cita.nombre}</td>
+                    <td class="p-4 font-mono font-medium text-gray-600">${cita.telefono}</td>
+                    <td class="p-4 text-primary font-bold">${cita.motivo}</td>
+                    <td class="p-4"><span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200"><i class="fa-solid fa-check-circle"></i> ${cita.estado}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
 </body>
 </html>
