@@ -251,7 +251,7 @@
             
             <div class="mt-12 text-center">
                 <a href="catalogo web.html" class="inline-flex items-center gap-2 font-heading font-bold text-primary hover:text-secondary transition text-2xl">
-                    Contamos con diferentes Especialidades <i class="fa-solid fa-circle-chevron-right text-3xl"></i>
+                    Revisa Nuestro Catálogo de Servicios <i class="fa-solid fa-circle-chevron-right text-3xl"></i>
                 </a>
             </div>
         </div>
@@ -552,7 +552,7 @@
 
         // BASE DE DATOS LOCAL Y EN NUBE
         let citasRegistradas = [
-            { fecha: new Date().toLocaleString(), origen: 'Formulario Web', nombre: 'Ana López (Ejemplo)', telefono: '949357095', motivo: 'Ortodoncia', estado: 'Aviso Enviado a Clínica' }
+            { fecha: new Date().toLocaleString(), origen: 'Formulario Web', nombre: 'Ana López (Ejemplo)', telefono: '950001309', motivo: 'Ortodoncia', estado: 'Aviso Enviado a Clínica' }
         ];
 
         // FUNCIÓN QUE ENVÍA LOS DATOS A GOOGLE SHEETS EN SEGUNDO PLANO
@@ -702,8 +702,8 @@
                 if(input === "Sí, enviar mis datos") {
                     addBotMessage("¡Genial! Abriendo WhatsApp... ¡Nos vemos pronto en el Consultoriol! 👋");
                     
-                    const texto = `*¡NUEVA ALERTA CRM CHATBOT!* 🚨🐶\nSoy Ketta. Paciente interesado:\n\n*Nombre:* ${tempUserData.nombre}\n*Teléfono:* ${tempUserData.telefono}\n*Interés:* ${tempUserData.motivo}`;
-                    setTimeout(() => { window.open(`https://wa.me/51949357095?text=${encodeURIComponent(texto)}`, '_blank'); toggleChatbot(); chatStep=0; }, 1500);
+                    const texto = `*¡NUEVA ALERTA CRM CHATBOT!* 🚨\nSoy Ketta. Paciente interesado:\n\n*Nombre:* ${tempUserData.nombre}\n*Teléfono:* ${tempUserData.telefono}\n*Interés:* ${tempUserData.motivo}`;
+                    setTimeout(() => { window.open(`https://wa.me/51914934518?text=${encodeURIComponent(texto)}`, '_blank'); toggleChatbot(); chatStep=0; }, 1500);
                 } else {
                     addBotMessage("¡Entendido! Nuestro personal ya tiene tus datos registrados y te llamará pronto. ¡Que tengas un gran día! 💙");
                     setTimeout(() => { toggleChatbot(); chatStep=0; }, 4000);
